@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '3.0.0'
+}
+
+group = 'com.insider'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.seleniumhq.selenium:selenium-java:4.18.1'
+    implementation 'io.qameta.allure:allure-java-commons:2.32.0'
+
+    compileOnly 'org.projectlombok:lombok:1.18.42'
+    annotationProcessor 'org.projectlombok:lombok:1.18.42'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.14.2'
+    testImplementation 'org.assertj:assertj-core:3.27.7'
+    testImplementation 'io.qameta.allure:allure-junit5:2.32.0'
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty "browser", System.getProperty("browser", "chrome")
+}
+
+allure {
+    version = "2.36.0"
+}
